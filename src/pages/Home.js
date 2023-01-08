@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { async } from 'q';
+import { Link, useParams } from "react-router-dom";
 
 export default function Home() {
 
     const [users,setUsers]=useState([]);
+    
     useEffect(()=>{
         loadUsers();
     },[])
