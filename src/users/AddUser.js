@@ -39,6 +39,9 @@ export default function AddUser () {
                         <button type="Submit" className="btn btn-outline-primary">
                             Submit
                         </button>
+                        <button type="Cancel" className="btn btn-outline-danger mx-2">
+                            Cancel
+                        </button>
                     </div>
                 </div>
             </div>
