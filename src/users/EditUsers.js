@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Await, Link, useNavigate, useParams } from 'react-router-dom';
 
 export default function EditUser () {
   
     let navigate=useNavigate()
+
+    const {id} =useParams()
 
   const [user, setUsers]=useState({
         name:"",
@@ -18,11 +20,20 @@ export default function EditUser () {
         setUsers({...user,[e.target.name]:e.target.value})
   };
 
+  useEffect(()=>{
+        loadUser()
+  },[])
+
   const onSubmit = async (e) => {
         e.preventDefault(); //Stops the creation of weird looking URLs
-        await axios.put(`http://localhost:8080/user`, user)
+        await axios.put(`http://localhost:8080/user/${id}`, user)
         navigate("/")
   };
+
+  const loadUser =async ()=>{
+        const result=await axios.get(`http://localhost:8080/user/${id}`)
+        setUsers(result.data)
+  }
   
   return (
     <div className='container'>
