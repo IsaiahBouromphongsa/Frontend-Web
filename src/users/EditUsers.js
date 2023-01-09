@@ -20,7 +20,7 @@ export default function EditUser () {
 
   const onSubmit = async (e) => {
         e.preventDefault(); //Stops the creation of weird looking URLs
-        await axios.post("http://localhost:8080/user", user)
+        await axios.put(`http://localhost:8080/user`, user)
         navigate("/")
   };
   
